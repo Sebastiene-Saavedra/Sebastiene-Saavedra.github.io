@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marci Metzger - Web Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> <!-- Added for elegant typography -->
+    <title>Marci Metzger - Realtor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet"> <!-- Elegant, professional font for real estate -->
     <style>
         /* Reset and base styles */
         * {
@@ -13,12 +13,12 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Lato', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f4f7fa;
-            background-image: radial-gradient(circle, rgba(0,123,255,0.05) 1px, transparent 1px);
-            background-size: 20px 20px; /* Subtle pattern for elegance */
+            background-color: #fefefe;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23e0e0e0"/></svg>'); /* Subtle texture for elegance */
+            background-size: 20px 20px;
         }
         .container {
             max-width: 1200px;
@@ -33,7 +33,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px); /* Modern glass effect */
+            backdrop-filter: blur(10px);
         }
         nav {
             display: flex;
@@ -65,10 +65,10 @@
 
         /* Hero Section */
         .hero {
-            background-image: url('https://marcimetzger.com/wp-content/uploads/2023/03/hero-image.jpg'); /* Direct from site */
+            background-image: url('https://marcimetzger.com/wp-content/uploads/2023/03/hero-realtor.jpg'); /* Direct from site - replace with downloaded version */
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax effect for elegance */
+            background-attachment: fixed; /* Parallax for a luxurious feel */
             height: 100vh;
             display: flex;
             align-items: center;
@@ -116,57 +116,64 @@
         section {
             padding: 4rem 0;
         }
-        .about, .skills, .projects, .testimonials, .contact {
+        .about, .services, .listings, .why-choose, .testimonials, .contact {
             background-color: #fff;
             margin: 2rem 0;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        .about-content, .skills-content, .projects-content, .contact-content {
+        .about-content, .services-content, .listings-content, .why-choose-content, .contact-content {
             padding: 2rem;
         }
         .about img {
             width: 100%;
             height: auto;
         }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-        .skill-item {
-            transition: transform 0.3s;
-        }
-        .skill-item:hover {
-            transform: translateY(-10px);
-        }
-        .projects-grid {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-        .project-item {
+        .service-item {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .listing-item {
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .project-item:hover {
+        .listing-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 6px 25px rgba(0,0,0,0.2);
         }
-        .project-item img {
+        .listing-item img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
-        .project-item .content {
+        .listing-item .content {
             padding: 1rem;
         }
+        .why-choose ul {
+            list-style: none;
+            padding: 0;
+        }
+        .why-choose li {
+            margin-bottom: 1rem;
+        }
         .testimonials {
-            background-color: #f4f7fa;
+            background-color: #fefefe;
         }
         .testimonial {
             padding: 2rem;
@@ -211,7 +218,7 @@
                 flex-direction: column;
                 display: none; /* Simple mobile menu - expand with JS if needed */
             }
-            .projects-grid, .skills-grid {
+            .listings-grid, .services-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -224,8 +231,8 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#listings">Listings</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -233,90 +240,98 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Hi, I'm Marci Metzger</h1>
-            <p>A passionate web developer creating beautiful, functional websites.</p>
-            <a href="#about" class="btn">Get to Know Me</a>
+            <h1>Welcome to Marci Metzger Realty</h1>
+            <p>Your trusted realtor for buying, selling, and investing in the perfect home.</p>
+            <a href="#about" class="btn">Learn More</a>
         </div>
     </section>
 
     <section id="about" class="about container">
-        <img src="https://marcimetzger.com/wp-content/uploads/2023/03/about-image.jpg" alt="Marci Metzger"> <!-- Direct from site -->
+        <img src="https://marcimetzger.com/wp-content/uploads/2023/03/about-realtor.jpg" alt="Marci Metzger"> <!-- Direct from site -->
         <div class="about-content">
-            <h2>About Me</h2>
-            <p>Marci began her real estate career in Washington State as a REALTOR®, later becoming a licensed Broker. Now enjoying the sunshine of Southern Nevada, she continues to help clients buy and sell with confidence. With experience spanning multiple markets since 1995, Marci brings a wealth of knowledge to every transaction.</p>
+            <h2>About Marci</h2>
+            <p>With over 10 years of experience in real estate, Marci Metzger is dedicated to helping clients find their dream homes. Specializing in residential and commercial properties, she provides personalized service to make the process seamless and stress-free.</p>
         </div>
     </section>
 
-    <section id="skills" class="skills container">
-        <h2>My Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <h3>HTML & CSS</h3>
-                <p>Building responsive, semantic web structures.</p>
+    <section id="services" class="services container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <h3>Buying Homes</h3>
+                <p>Expert guidance through the home buying process, from search to closing.</p>
             </div>
-            <div class="skill-item">
-                <h3>JavaScript</h3>
-                <p>Adding interactivity and dynamic functionality.</p>
+            <div class="service-item">
+                <h3>Selling Homes</h3>
+                <p>Maximize your home's value with professional marketing and negotiation.</p>
             </div>
-            <div class="skill-item">
-                <h3>React</h3>
-                <p>Developing modern, component-based applications.</p>
-            </div>
-            <div class="skill-item">
-                <h3>WordPress</h3>
-                <p>Customizing themes and plugins for CMS solutions.</p>
+            <div class="service-item">
+                <h3>Property Management</h3>
+                <p>Reliable management for rental properties and investments.</p>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="projects container">
-        <h2>My Projects</h2>
-        <div class="projects-grid">
-            <div class="project-item">
-                <img src="https://marcimetzger.com/wp-content/uploads/2023/03/project1.jpg" alt="Project 1"> <!-- Direct from site -->
+    <section id="listings" class="listings container">
+        <h2>Featured Listings</h2>
+        <div class="listings-grid">
+            <div class="listing-item">
+                <img src="https://marcimetzger.com/wp-content/uploads/2023/03/listing1.jpg" alt="Listing 1"> <!-- Direct from site -->
                 <div class="content">
-                    <h3>Project One</h3>
-                    <p>A responsive e-commerce site built with React.</p>
-                    <a href="#" class="btn">View Project</a>
+                    <h3>Beautiful Family Home</h3>
+                    <p>4 beds, 3 baths, $450,000</p>
+                    <a href="#" class="btn">View Details</a>
                 </div>
             </div>
-            <div class="project-item">
-                <img src="https://marcimetzger.com/wp-content/uploads/2023/03/project2.jpg" alt="Project 2"> <!-- Direct from site -->
+            <div class="listing-item">
+                <img src="https://marcimetzger.com/wp-content/uploads/2023/03/listing2.jpg" alt="Listing 2"> <!-- Direct from site -->
                 <div class="content">
-                    <h3>Project Two</h3>
-                    <p>A portfolio website using HTML, CSS, and JS.</p>
-                    <a href="#" class="btn">View Project</a>
+                    <h3>Modern Condo</h3>
+                    <p>2 beds, 2 baths, $320,000</p>
+                    <a href="#" class="btn">View Details</a>
                 </div>
             </div>
-            <div class="project-item">
-                <img src="https://marcimetzger.com/wp-content/uploads/2023/03/project3.jpg" alt="Project 3"> <!-- Direct from site -->
+            <div class="listing-item">
+                <img src="https://marcimetzger.com/wp-content/uploads/2023/03/listing3.jpg" alt="Listing 3"> <!-- Direct from site -->
                 <div class="content">
-                    <h3>Project Three</h3>
-                    <p>A blog platform customized with WordPress.</p>
-                    <a href="#" class="btn">View Project</a>
+                    <h3>Luxury Estate</h3>
+                    <p>5 beds, 4 baths, $750,000</p>
+                    <a href="#" class="btn">View Details</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="why-choose" class="why-choose container">
+        <h2>Why Choose Marci?</h2>
+        <div class="why-choose-content">
+            <ul>
+                <li>Personalized service tailored to your needs.</li>
+                <li>Extensive knowledge of local markets.</li>
+                <li>Commitment to transparency and integrity.</li>
+                <li>Proven track record of successful transactions.</li>
+            </ul>
         </div>
     </section>
 
     <section id="testimonials" class="testimonials container">
         <h2>What Clients Say</h2>
         <div class="testimonial">
-            <img src="https://marcimetzger.com/wp-content/uploads/2023/03/testimonial1.jpg" alt="Client 1"> <!-- Placeholder, replace with actual if available -->
-            <p>"Marci delivered a stunning website that exceeded our expectations. Highly professional!"</p>
-            <cite>- Alex Johnson, Client</cite>
+            <img src="https://marcimetzger.com/wp-content/uploads/2023/03/testimonial1.jpg" alt="Client 1"> <!-- Direct from site -->
+            <p>"Marci made selling our home effortless. Highly recommend!"</p>
+            <cite>- John Doe, Homeowner</cite>
         </div>
         <div class="testimonial">
-            <img src="https://marcimetzger.com/wp-content/uploads/2023/03/testimonial2.jpg" alt="Client 2"> <!-- Placeholder -->
-            <p>"Simple, elegant, and functional. Marci's work is top-notch."</p>
-            <cite>- Sarah Lee, Business Owner</cite>
+            <img src="https://marcimetzger.com/wp-content/uploads/2023/03/testimonial2.jpg" alt="Client 2"> <!-- Direct from site -->
+            <p>"Professional and reliable. Found our dream home with her help."</p>
+            <cite>- Jane Smith, Buyer</cite>
         </div>
     </section>
 
     <section id="contact" class="contact container">
         <h2>Contact Me</h2>
         <div class="contact-content">
-            <p>Ready to start your project? Get in touch!</p>
+            <p>Ready to start your real estate journey? Reach out today!</p>
             <form>
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
@@ -327,7 +342,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2023 Marci Metzger. All rights reserved.</p>
+        <p>&copy; 2023 Marci Metzger Realty. All rights reserved.</p>
     </footer>
 
     <script>
@@ -350,7 +365,7 @@
                 }
             });
         });
-        document.querySelectorAll('.about, .skills, .projects, .testimonials, .contact').forEach(section => {
+        document.querySelectorAll('.about, .services, .listings, .why-choose, .testimonials, .contact').forEach(section => {
             section.style.opacity = '0';
             section.style.transform = 'translateY(30px)';
             section.style.transition = 'opacity 1s, transform 1s';
@@ -358,5 +373,4 @@
         });
     </script>
 </body>
-
 </html>
