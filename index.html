@@ -467,13 +467,13 @@
                   <div class="dropdown">
                     <div class="dropdown-selected">Loading...</div>
                         <div class="dropdown-options">
-                          <div>Monday: 08:00 am – 07:00 pm</div>
-                          <div>Tuesday: 08:00 am – 07:00 pm</div>
-                          <div>Wednesday: 08:00 am – 07:00 pm</div>
-                          <div>Thursday: 08:00 am – 07:00 pm</div>
-                          <div>Friday: 08:00 am – 07:00 pm</div>
-                          <div>Saturday: 08:00 am – 07:00 pm</div>
-                          <div>Sunday: 08:00 am – 07:00 pm</div>
+                          <div data-day="Mon">Monday: 08:00 am – 07:00 pm</div>
+                          <div data-day="Tue">Tuesday: 08:00 am – 07:00 pm</div>
+                          <div data-day="Wed">Wednesday: 08:00 am – 07:00 pm</div>
+                          <div data-day="Thu">Thursday: 08:00 am – 07:00 pm</div>
+                          <div data-day="Fri">Friday: 08:00 am – 07:00 pm</div>
+                          <div data-day="Sat">Saturday: 08:00 am – 07:00 pm</div>
+                          <div data-day="Sun">Sunday: 08:00 am – 07:00 pm</div>
                         <br>
                             <p>Appointments outside office hours available upon request. Just call!</p>
                         <br>
@@ -529,39 +529,50 @@ lightbox.addEventListener('click', () => {
             });
         });
 
-            const dropdown = document.querySelector('.dropdown');
-            const selected = dropdown.querySelector('.dropdown-selected');
-            const options = dropdown.querySelectorAll('.dropdown-options div');
-            const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-            const today = new Date().getDay();
-            const todayStr = days[today];
+            document.addEventListener('DOMContentLoaded', () => {
 
-        options.forEach(option => {
-            if(option.dataset.day === todayStr){
+    const dropdown = document.querySelector('.dropdown');
+    const selected = dropdown.querySelector('.dropdown-selected');
+    const options = dropdown.querySelectorAll('.dropdown-options div[data-day]');
+
+    // Map JS getDay() to day strings
+    const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    const today = new Date().getDay(); // 0=Sun,1=Mon,...
+    const todayStr = days[today];
+
+    // Show current day by default
+    let found = false;
+    options.forEach(option => {
+        if(option.dataset.day === todayStr){
             selected.textContent = option.textContent;
-            }
-        });
-        
-            // Toggle dropdown open/close
-            dropdown.addEventListener('click', () => {
-            dropdown.classList.toggle('active');
-        });
+            found = true;
+        }
+    });
 
-            // Update selected text when clicking an option
-            options.forEach(option => {
-            option.addEventListener('click', (e) => {
+    if(!found) selected.textContent = "Select a day";
+
+    // Toggle dropdown open/close
+    dropdown.addEventListener('click', () => {
+        dropdown.classList.toggle('active');
+    });
+
+    // Update selected text when clicking an option
+    options.forEach(option => {
+        option.addEventListener('click', (e) => {
             selected.textContent = option.textContent;
             dropdown.classList.remove('active'); // close dropdown
             e.stopPropagation();
-            });
         });
+    });
 
-        // Close dropdown if clicking outside
-        document.addEventListener('click', (e) => {
-            if(!dropdown.contains(e.target)){
-                dropdown.classList.remove('active');
-                }
-            });
+    // Close dropdown if clicking outside
+    document.addEventListener('click', (e) => {
+        if(!dropdown.contains(e.target)){
+            dropdown.classList.remove('active');
+        }
+    });
+
+});
         
         // Simple fade-in animation on scroll
         const observer = new IntersectionObserver((entries) => {
@@ -581,6 +592,7 @@ lightbox.addEventListener('click', () => {
     </script>
 </body>
 </html>
+
 
 
 
