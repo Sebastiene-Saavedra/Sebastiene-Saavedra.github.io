@@ -153,8 +153,9 @@
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);  /* FORCE full width usage */
             gap: 2rem;
+            width: 100%;
         }
         .service-item {
             text-align: center;
@@ -474,6 +475,7 @@ lightbox.addEventListener('click', () => {
     </script>
 </body>
 </html>
+
 
 
 
