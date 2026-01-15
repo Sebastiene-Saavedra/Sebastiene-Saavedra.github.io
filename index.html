@@ -465,7 +465,7 @@
                 <h4>Office Hours</h4>
                 <div class="office-hours">
                   <div class="dropdown">
-                    <div class="dropdown-selected">Select a day</div>
+                    <div class="dropdown-selected">Loading...</div>
                         <div class="dropdown-options">
                           <div>Monday: 08:00 am – 07:00 pm</div>
                           <div>Tuesday: 08:00 am – 07:00 pm</div>
@@ -529,19 +529,27 @@ lightbox.addEventListener('click', () => {
             });
         });
 
-        /* OFFICE HOURS DROPDOWN - START */
-const dropdown = document.querySelector('.dropdown');
-const selected = dropdown.querySelector('.dropdown-selected');
-const options = dropdown.querySelectorAll('.dropdown-options div');
+            const dropdown = document.querySelector('.dropdown');
+            const selected = dropdown.querySelector('.dropdown-selected');
+            const options = dropdown.querySelectorAll('.dropdown-options div');
+            const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+            const today = new Date().getDay();
+            const todayStr = days[today];
 
-// Toggle dropdown open/close
-dropdown.addEventListener('click', () => {
-    dropdown.classList.toggle('active');
-});
-
-// Update selected text when clicking an option
         options.forEach(option => {
-        option.addEventListener('click', (e) => {
+            if(option.dataset.day === todayStr){
+            selected.textContent = option.textContent;
+            }
+        });
+        
+            // Toggle dropdown open/close
+            dropdown.addEventListener('click', () => {
+            dropdown.classList.toggle('active');
+        });
+
+            // Update selected text when clicking an option
+            options.forEach(option => {
+            option.addEventListener('click', (e) => {
             selected.textContent = option.textContent;
             dropdown.classList.remove('active'); // close dropdown
             e.stopPropagation();
@@ -573,6 +581,7 @@ dropdown.addEventListener('click', () => {
     </script>
 </body>
 </html>
+
 
 
 
