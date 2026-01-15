@@ -166,20 +166,48 @@
             padding: 1rem;
         }
         .photo-gallery {
-            margin: 3rem auto; /* Added margin for the photo gallery */
+            margin: 3rem auto;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px; /* Optional: adds space between images instead of inline margin-right */
+            gap: 30px;
         }
-        .gallery-item {
-            flex: 0 0 auto;
-        }
+
         .gallery-item img {
             width: 200px;
             height: 200px;
             object-fit: cover;
             border-radius: 8px;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
         .contact form {
             display: grid;
@@ -318,15 +346,20 @@
     <h2 style="text-align:center; margin-bottom:2rem;">Photo Gallery</h2>
 
     <div class="photo-gallery">
-        <div class="gallery-item"><img src="images/Gallery1.webp" alt=""></div>
-        <div class="gallery-item"><img src="images/Gallery2.webp" alt=""></div>
-        <div class="gallery-item"><img src="images/Gallery3.webp" alt=""></div>
-        <div class="gallery-item"><img src="images/Gallery4.webp" alt=""></div>
-        <div class="gallery-item"><img src="images/Gallery5.webp" alt=""></div>
-        <div class="gallery-item"><img src="images/Gallery6.webp" alt=""></div>
-        <div class="gallery-item"><img src="images/Gallery7.webp" alt=""></div>
+        <div class="gallery-item"><img src="images/Gallery1.webp"></div>
+        <div class="gallery-item"><img src="images/Gallery2.webp"></div>
+        <div class="gallery-item"><img src="images/Gallery3.webp"></div>
+        <div class="gallery-item"><img src="images/Gallery4.webp"></div>
+        <div class="gallery-item"><img src="images/Gallery5.webp"></div>
+        <div class="gallery-item"><img src="images/Gallery6.webp"></div>
+        <div class="gallery-item"><img src="images/Gallery7.webp"></div>
     </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <img src="" alt="Zoomed image">
+</div>
 
     <section id="contact" class="contact container">
         <h2>Contact Me</h2>
@@ -397,6 +430,7 @@
     </script>
 </body>
 </html>
+
 
 
 
