@@ -275,12 +275,58 @@ n<!DOCTYPE html>
             }
             nav ul {
                 flex-direction: column;
-                display: none; /* Simple mobile menu - expand with JS if needed */
+                display: none; 
             }
             .listings-grid, .services-grid {
                 grid-template-columns: 1fr;
             }
         }
+        .office-hours {
+    font-family: 'Lato', sans-serif;
+    width: 300px;
+    margin: 1rem 0;
+}
+
+.dropdown {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdown-selected {
+    padding: 0.75rem 1rem;
+    background-color: #fff;
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #fff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 10;
+}
+
+.dropdown-options div {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid #eee;
+}
+
+.dropdown-options div:hover {
+    background-color: #f0f0f0;
+}
+
+
+.dropdown.active .dropdown-options {
+    max-height: 500px; 
+}
     </style>
 </head>
 <body>
@@ -417,16 +463,21 @@ n<!DOCTYPE html>
                 <p>(206) 919-6886</p>
                 <br>
                 <h4>Office Hours</h4>
-                <ul>
-                    <li>Mon: 08:00 am – 07:00 pm</li>
-                    <li>Tue: 08:00 am – 07:00 pm</li>
-                    <li>Wed: 08:00 am – 07:00 pm</li>
-                    <li>Thu: 08:00 am – 07:00 pm</li>
-                    <li>Fri: 08:00 am – 07:00 pm</li>
-                    <li>Sat: 08:00 am – 07:00 pm</li>
-                    <li>Sun: 08:00 am – 07:00 pm</li>
-                </ul>
-                <br>
+                <div class="office-hours">
+                  <div class="dropdown">
+                    <div class="dropdown-selected">Select a day</div>
+                        <div class="dropdown-options">
+                          <div>Monday: 08:00 am – 07:00 pm</div>
+                          <div>Tuesday: 08:00 am – 07:00 pm</div>
+                          <div>Wednesday: 08:00 am – 07:00 pm</div>
+                          <div>Thursday: 08:00 am – 07:00 pm</div>
+                          <div>Friday: 08:00 am – 07:00 pm</div>
+                          <div>Saturday: 08:00 am – 07:00 pm</div>
+                          <div>Sunday: 08:00 am – 07:00 pm</div>
+                        <br>
+                        </div>
+                      </div>
+                    </div>
             </div>
             <p>Want to know more? Send us a message today!</p>
             <form>
@@ -476,6 +527,32 @@ lightbox.addEventListener('click', () => {
             });
         });
 
+        /* OFFICE HOURS DROPDOWN - START */
+const dropdown = document.querySelector('.dropdown');
+const selected = dropdown.querySelector('.dropdown-selected');
+const options = dropdown.querySelectorAll('.dropdown-options div');
+
+// Toggle dropdown open/close
+dropdown.addEventListener('click', () => {
+    dropdown.classList.toggle('active');
+});
+
+// Update selected text when clicking an option
+        options.forEach(option => {
+        option.addEventListener('click', (e) => {
+            selected.textContent = option.textContent;
+            dropdown.classList.remove('active'); // close dropdown
+            e.stopPropagation();
+            });
+        });
+
+        // Close dropdown if clicking outside
+        document.addEventListener('click', (e) => {
+            if(!dropdown.contains(e.target)){
+                dropdown.classList.remove('active');
+                }
+            });
+        
         // Simple fade-in animation on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -494,6 +571,7 @@ lightbox.addEventListener('click', () => {
     </script>
 </body>
 </html>
+
 
 
 
