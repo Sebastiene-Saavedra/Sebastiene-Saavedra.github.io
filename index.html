@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marci Metzger - Realtor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet"> <!-- Elegant, professional font for real estate -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
         /* Reset and base styles */
         * {
@@ -12,14 +14,17 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Lato', sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #fefefe;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23e0e0e0"/></svg>'); /* Subtle texture for elegance */
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23e0e0e0"/></svg>');
             background-size: 20px 20px;
         }
+
+        /* Center ALL sections */
         section {
             padding: 4rem 0;
             display: flex;
@@ -40,138 +45,96 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
         }
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
         }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #007bff;
-        }
+
         nav ul {
             list-style: none;
             display: flex;
         }
+
         nav ul li {
             margin-left: 2rem;
         }
+
         nav ul li a {
             text-decoration: none;
             color: #333;
-            transition: color 0.3s, transform 0.3s;
-        }
-        nav ul li a:hover {
-            color: #007bff;
-            transform: scale(1.05);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            background-image: url('images/RS1.webp'); /* Direct from site - replace with downloaded version */
+            background-image: url('images/RS1.webp');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax for a luxurious feel */
             height: 100vh;
-            display: flex;
             align-items: center;
-            justify-content: center;
             text-align: center;
             color: #fff;
             position: relative;
         }
+
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: rgba(0,0,0,0.4);
         }
+
         .hero-content {
             position: relative;
             z-index: 1;
-            animation: fadeInUp 2s ease-out;
         }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
+
         .btn {
             background-color: #007bff;
             color: #fff;
             padding: 0.75rem 1.5rem;
-            text-decoration: none;
             border-radius: 25px;
-            transition: background 0.3s, transform 0.3s;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-            transform: translateY(-5px);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
         }
 
-        /* Sections */
-        section {
-            padding: 4rem 0;
-        }
-        .about, .services, .listings, .why-choose, .testimonials, .contact {
+        /* Cards */
+        .about, .services, .listings, .contact {
             background-color: #fff;
             margin: 2rem 0;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
         }
-        .about-content, .services-content, .listings-content, .why-choose-content, .contact-content {
-            padding: 2rem;
+
+        section img {
+            display: block;
+            margin: 1rem auto;
         }
-        .about img {
-            width: 100%;
-            height: auto;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .service-item {
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .service-item:hover {
-            transform: translateY(-10px);
-        }
+
+        /* Grids */
+        .services-grid,
         .listings-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            justify-items: center;
         }
+
         .listing-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 350px;
         }
-        .listing-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.2);
-        }
+
         .listing-item img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
-        .listing-item .content {
-            padding: 1rem;
-        }
+
+        /* Gallery */
         .photo-gallery {
             margin: 3rem auto;
             display: flex;
@@ -186,14 +149,9 @@
             object-fit: cover;
             border-radius: 8px;
             cursor: zoom-in;
-            transition: transform 0.3s ease;
         }
 
-        .gallery-item img:hover {
-            transform: scale(1.05);
-        }
-
-        /* LIGHTBOX */
+        /* Lightbox */
         .lightbox {
             position: fixed;
             inset: 0;
@@ -208,25 +166,23 @@
             max-width: 90%;
             max-height: 90%;
             border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            animation: zoomIn 0.3s ease;
         }
 
-        @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
+        /* Contact */
         .contact form {
+            max-width: 600px;
+            margin: 0 auto;
             display: grid;
             gap: 1rem;
         }
-        .contact input, .contact textarea {
+
+        .contact input,
+        .contact textarea {
             padding: 0.75rem;
-            border: 1px solid #ddd;
             border-radius: 5px;
+            border: 1px solid #ddd;
         }
 
-        /* Footer */
         footer {
             background-color: #333;
             color: #fff;
@@ -234,124 +190,53 @@
             padding: 2rem 0;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
             nav ul {
-                flex-direction: column;
-                display: none; /* Simple mobile menu - expand with JS if needed */
-            }
-            .listings-grid, .services-grid {
-                grid-template-columns: 1fr;
+                display: none;
             }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <img src="images/Title1.webp" style="width:150px; height:100px;">
-            </div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#listings">Listings</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Marci Metzger - THE RIDGE REALTY GROUP</h1>
-            <p>Your trusted realtor for buying, selling, and investing in the perfect home.</p>
-            <a href="#about" class="btn">Learn More</a>
-        </div>
-    </section>
-
-    <section id="about" class="about container">
-        <img src="images/RLT1.webp" style="width:200px; height:200px;"> <!-- Direct from site -->
-        <div class="about-content">
-            <h2>About Marci</h2>
-            <p>With over 10 years of experience in real estate, Marci Metzger is dedicated to helping clients find their dream homes. Specializing in residential and commercial properties, she provides personalized service to make the process seamless and stress-free.</p>
-        </div>
-    </section>
-
-    <section id="services" class="services container">
-        <h2>Our Services</h2>
-        <br>
-        <div class="services-grid">
-            <div class="service-item">
-                <img src="images/Buy1.webp" style="width:300px; height:200px;">
-                <h3>Buying Homes</h3>
-                <p>We provide personalized support through the entire home buying journey, helping you find the right home, understand your options, and manage every detail from the initial search to a smooth and successful closing.</p>
-            </div>
-            <div class="service-item">
-                <img src="images/Sell1.webp" style="width:300px; height:200px;">
-                <h3>Selling Homes</h3>
-                <p>Our team works to showcase your home at its best through expert pricing, high-quality marketing, and strong negotiation. We guide you through each step of the selling process, ensuring a smooth transaction and the best possible outcome.</p>
-            </div>
-            <div class="service-item">
-                <img src="images/Service1.webp" style="width:300px; height:200px;">
-                <h3>Property Management</h3>
-                <p>Reliable, full-service management for rental properties and real estate investments. We handle tenant screening, rent collection, maintenance coordination, and financial reporting—protecting your investment while maximizing long-term returns.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="listings" class="listings container">
-        <div class="listings-header">
-        <h2>Featured Listings</h2>
-        <a href="https://theridgerealty.idxbroker.com/idx/results/listings" target="_blank" class="view-all-btn">View All Listings</a>
+<section id="home" class="hero">
+    <div class="hero-content container">
+        <h1>Marci Metzger - THE RIDGE REALTY GROUP</h1>
+        <p>Your trusted realtor for buying, selling, and investing.</p>
+        <a href="#about" class="btn">Learn More</a>
     </div>
-        <br>
-        <div class="listings-grid">
-            <div class="listing-item">
-                <img src="images/House1.jpg"> <!-- Direct from site -->
-                <div class="content">
-                    <h3>Beautiful Family Home</h3>
-                    <p>4751 W Adkisson Street, Pahrump, NV</p>
-                    <p>4 beds, 5 baths, $1,850,000</p>
-                    <br>
-                    <a href="https://theridgerealty.idxbroker.com/idx/details/listing/c015/2743604/4751-W-Adkisson-Street-Pahrump-NV?widgetReferer=true" target="_blank" class="btn">View Details</a>
-                </div>
-            </div>
-            <div class="listing-item">
-                <img src="images/House2.jpg"> <!-- Direct from site -->
-                <div class="content">
-                    <h3>Beautiful Family Home</h3>
-                    <p>3736 S Spring Mountain Boulevard, Pahrump, NV</p>
-                    <p>4 beds, 6 baths, $1,595,000</p>
-                    <br>
-                    <a href="https://theridgerealty.idxbroker.com/idx/details/listing/c015/2743576/3736-S-Spring-Mountain-Boulevard-Pahrump-NV?widgetReferer=true" target="_blank" class="btn">View Details</a>
-                </div>
-            </div>
-            <div class="listing-item">
-                <img src="images/House3.jpg"> <!-- Direct from site -->
-                <div class="content">
-                    <h3>Luxury Estate</h3>
-                    <p>2221 W Windsong Lane, Pahrump, NV</p>
-                    <p>3 beds, 3 baths, $1,450,000</p>
-                    <br>
-                    <a href="https://theridgerealty.idxbroker.com/idx/details/listing/c015/2705063/2221-W-Windsong-Lane-Pahrump-NV?widgetReferer=true" target="_blank" class="btn">View Details</a>
-                </div>
-            </div>
+</section>
+
+<section id="about" class="about container">
+    <img src="images/RLT1.webp" width="200">
+    <h2>About Marci</h2>
+    <p>With over 10 years of experience in real estate, Marci Metzger is dedicated to helping clients find their dream homes.</p>
+</section>
+
+<section id="services" class="services container">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+        <div>
+            <img src="images/Buy1.webp" width="300">
+            <h3>Buying Homes</h3>
+            <p>Guidance from search to closing.</p>
         </div>
-    </section>
+        <div>
+            <img src="images/Sell1.webp" width="300">
+            <h3>Selling Homes</h3>
+            <p>Expert pricing and marketing.</p>
+        </div>
+        <div>
+            <img src="images/Service1.webp" width="300">
+            <h3>Property Management</h3>
+            <p>Full-service rental management.</p>
+        </div>
+    </div>
+</section>
 
-    <section id="photo-gallery" class="container">
-    <h2 style="text-align:center; margin-bottom:2rem;">Photo Gallery</h2>
-
+<section id="photo-gallery" class="container">
+    <h2>Photo Gallery</h2>
     <div class="photo-gallery">
         <div class="gallery-item"><img src="images/Gallery1.webp"></div>
         <div class="gallery-item"><img src="images/Gallery2.webp"></div>
@@ -363,147 +248,29 @@
     </div>
 </section>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-    <img src="" alt="Zoomed image">
+    <img src="">
 </div>
 
-    <section id="contact" class="contact container">
-        <h2>Contact Me</h2>
-        <div class="contact-content">
-            <div class="contact-info">
-                <h3>Marci Metzger - THE RIDGE REALTY GROUP</h3>
-                <p>3190 HW-160, Suite F, Pahrump, Nevada 89048, United States</p>
-                <p>(206) 919-6886</p>
-                <br>
-                <h4>Office Hours</h4>
-                <ul>
-                    <li>Mon: 08:00 am – 07:00 pm</li>
-                    <li>Tue: 08:00 am – 07:00 pm</li>
-                    <li>Wed: 08:00 am – 07:00 pm</li>
-                    <li>Thu: 08:00 am – 07:00 pm</li>
-                    <li>Fri: 08:00 am – 07:00 pm</li>
-                    <li>Sat: 08:00 am – 07:00 pm</li>
-                    <li>Sun: 08:00 am – 07:00 pm</li>
-                </ul>
-                <br>
-            </div>
-            <p>Want to know more? Send us a message today!</p>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </section>
+<footer>
+    <p>&copy; 2023 Marci Metzger Homes</p>
+</footer>
 
-    <footer>
-        <div class="lgo">
-        <img src="images/Logo1.webp" style="width:70px; height:70px; margin-right: 30px;">
-    <img src="images/Logo2.webp" style="width:70px; height:70px; margin-right: 30px;">
-    <img src="images/Logo3.webp" style="width:70px; height:70px; margin-right: 30px;">
-    <img src="images/Logo4.webp" style="width:70px; height:70px;">
-        </div>
-        <p>&copy; 2023 Marci Metzger Homes. All rights reserved.</p>
-    </footer>
-
-    <script>
-        /* Gallery Zoom Script */
+<script>
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = lightbox.querySelector('img');
 
 document.querySelectorAll('.gallery-item img').forEach(img => {
-    img.addEventListener('click', () => {
+    img.onclick = () => {
         lightboxImg.src = img.src;
         lightbox.style.display = 'flex';
-    });
+    };
 });
 
-lightbox.addEventListener('click', () => {
+lightbox.onclick = () => {
     lightbox.style.display = 'none';
-    lightboxImg.src = '';
-});
-        
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+};
+</script>
 
-        // Simple fade-in animation on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        });
-        document.querySelectorAll('.about, .services, .listings, .why-choose, .testimonials, .contact').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'opacity 1s, transform 1s';
-            observer.observe(section);
-        });
-    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
