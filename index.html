@@ -165,12 +165,18 @@
         .listing-item .content {
             padding: 1rem;
         }
-        .gallery ul {
-            list-style: none;
-            padding: 0;
+        .photo-gallery {
+            margin: 20px 0; /* Added margin for the photo gallery */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px; /* Optional: adds space between images instead of inline margin-right */
         }
-        .gallery li {
-            margin-bottom: 1rem;
+        .gallery-item img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
         }
         .testimonials {
             background-color: #fefefe;
@@ -402,6 +408,7 @@
     </script>
 </body>
 </html>
+
 
 
 
